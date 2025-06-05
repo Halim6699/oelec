@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oéléctricité & Plomberie - Votre expert en solutions Énergie & Eau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Geist Sans', sans-serif;
+            background-color: #0A0A0A; 
+            color: #E5E7EB; 
+            overflow-x: hidden;
+        }
+
+        .retro-grid {
+            --grid-angle: 65deg;
+            --cell-size: 50px;
+            --opacity: 0.25;
+            --line-color: #374151; 
+        }
+
+        .grid-container {
+            opacity: var(--opacity);
+        }
+
+        .grid-lines {
+            background-image:
+                linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+            background-size: var(--cell-size) var(--cell-size);
+            animation: animate-grid 25s linear infinite;
+            height: 300vh; 
+            width: 600vw;  
+            position: absolute;
+            inset: -100% -100%; 
+            margin: auto;
+            transform-origin: 50% 50%; 
+        }
+        
+        @keyframes animate-grid {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(calc(var(--cell-size) / 4), calc(var(--cell-size) / 4)); }
+            50% { transform: translate(0, calc(var(--cell-size) / 2)); }
+            75% { transform: translate(calc(var(--cell-size) / -4), calc(var(--cell-size) / 4)); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .cta-shine-container {
+            position: relative; display: inline-block; overflow: hidden;
+            border-radius: 9999px; padding: 1.5px; 
+        }
+        .cta-shine-animated-border {
+            position: absolute; inset: -1000%; 
+            animation: spin 3s linear infinite;
+            background-image: conic-gradient(from 90deg at 50% 50%, #8B5CF6 0%, #EC4899 50%, #8B5CF6 100%);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .cta-button-content {
+            display: inline-flex; height: 100%; width: 100%; cursor: pointer;
+            align-items: center; justify-content: center; border-radius: 9999px; 
+            background-color: #111827; font-size: 0.875rem; font-weight: 500; 
+            backdrop-filter: blur(1.5rem); padding: 1rem 2.5rem; color: white;
+            transition: background-color 0.3s;
+        }
+        .cta-button-content:hover { background-color: #1f2937; }
+
+        .font-geist { font-family: 'Geist Sans', sans-serif; }
+        
+        .chevron-icon {
+            display: inline-block; width: 1em; height: 1em;
+            margin-left: 0.5rem; transition: transform 0.3s;
+        }
+        .group:hover .chevron-icon { transform: translateX(0.25rem); }
+
+        .call-now-prompt {
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 5px rgba(236, 72, 153, 0.5), 0 0 10px rgba(139, 92, 246, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(236, 72, 153, 0.8), 0 0 25px rgba(139, 92, 246, 0.6);
+            }
+        }
+        
+        .service-card {
+            background-color: rgba(17, 24, 39, 0.6); /* bg-gray-900 with opacity */
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(55, 65, 81, 0.6); /* border-gray-700 with opacity */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2), 0 5px 15px rgba(236, 72, 153, 0.15);
+        }
+         .service-icon-container {
+            width: 56px; /* w-14 */
+            height: 56px; /* h-14 */
+            border-radius: 0.5rem; /* rounded-lg */
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem; /* mb-4 */
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-icon-container {
+            transform: scale(1.1);
+        }
+        .service-card h3 {
+             background-image: linear-gradient(to right, #A78BFA, #F472B6); /* Purple to Pink gradient for titles */
+             background-clip: text; -webkit-background-clip: text; color: transparent;
+             font-size: 1.25rem; /* text-xl */
+        }
+
+
+        /* Cookie Consent Modal Styles */
+        #cookie-consent-modal {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #111827; 
+            color: #e5e7eb; 
+            padding: 1.5rem; 
+            z-index: 2000; 
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+            border-top: 1px solid #374151; 
+        }
+        #cookie-consent-modal.active {
+            transform: translateY(0%);
+        }
+        .cookie-consent-content {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+         @media (min-width: 640px) { 
+            .cookie-consent-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+            }
+        }
+        .cookie-consent-text {
+            margin-bottom: 1rem;
+        }
+         @media (min-width: 640px) {
+            .cookie-consent-text {
+                margin-bottom: 0;
+                margin-right: 1.5rem; 
+                flex-grow: 1;
+            }
+        }
+        .cookie-consent-text p {
+            font-size: 0.875rem; 
+            margin-bottom: 0.5rem;
+        }
+        .cookie-consent-text a {
+            color: #a78bfa; 
+            text-decoration: underline;
+        }
+        .cookie-consent-button {
+            background-color: #8b5cf6; 
+            color: white;
+            padding: 0.75rem 1.5rem; 
+            border-radius: 0.375rem; 
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border: none;
+            font-weight: 500; 
+            white-space: nowrap;
+        }
+        .cookie-consent-button:hover {
+            background-color: #7c3aed; 
+        }
+
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.25rem; } 
+            .hero-subtitle { font-size: 1.15rem; } 
+            .footer-contact-info { flex-direction: column; align-items: center; }
+            .footer-contact-info > span { margin-bottom: 0.25rem; }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden">
+        <div class="absolute top-0 h-screen w-screen bg-purple-950/5 dark:bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+        <div class="retro-grid pointer-events-none absolute size-full overflow-hidden [perspective:200px]">
+            <div class="grid-container absolute inset-0 [transform:rotateX(var(--grid-angle))]">
+                <div class="grid-lines"></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent to-80%"></div>
+        </div>
+    </div>
+
+    <header class="absolute top-0 left-0 right-0 z-30 p-4 sm:p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="main.html" class="flex items-center space-x-2 text-2xl font-bold text-white"> 
+                <img src="assets/images/logo.jpg" alt="Logo oéléctricité & Plomberie" class="w-8 h-8 rounded-full">
+                <span>oéléctricité <span class="text-xl text-blue-400">& Plomberie</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="equipe.html" class="text-gray-300 hover:text-white transition-colors">Notre equipe</a> 
+                <a href="services.html" class="text-gray-300 hover:text-white transition-colors">Nos Services</a> 
+                <a href="projets.html" class="text-gray-300 hover:text-white transition-colors">Nos projets</a> 
+                <a href="fournisseur.html" class="text-gray-300 hover:text-white transition-colors">Nos Fournisseurs</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                <a href="https://www.tiktok.com/@oelectricite.fr?is_from_webapp=1&sender_device=pc" target="_blank" class="flex items-center space-x-1 bg-gradient-to-r from-pink-500 to-blue-500 text-white px-3 py-1 rounded-full transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 448 512"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                    <span class="font-medium">Suivez nos projets</span>
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md shadow-lg rounded-b-lg">
+            <a href="equipe.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Notre equipe</a>
+            <a href="services.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Nos Services</a>
+            <a href="projets.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Nos projets</a>
+            <a href="fournisseur.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Nos Fournisseurs</a>
+            <a href="#contact" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Contact</a>
+            <a href="https://www.tiktok.com/@oelectricite.fr?is_from_webapp=1&sender_device=pc" target="_blank" class="flex items-center space-x-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-blue-500 text-white hover:bg-gray-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 448 512"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                <span class="font-medium">Suivez nos projets</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-28 sm:py-32 md:px-8">
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <a href="#contact" class="group inline-block text-sm text-gray-400 font-geist mx-auto px-5 py-2 bg-white/5 border border-white/10 rounded-full w-fit hover:border-white/20 transition-all duration-300">
+                    Solutions Énergie & Eau Complètes 💧⚡
+                    <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+
+                <h1 class="hero-title text-4xl tracking-tighter font-geist sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-300 to-gray-500">
+                    oéléctricité & Plomberie:
+                    <span class="block sm:inline text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400">
+                        Confort & Sérénité Assurés.
+                    </span>
+                </h1>
+
+                <p class="hero-subtitle max-w-2xl mx-auto text-gray-300 text-lg sm:text-xl md:text-2xl">
+                    Votre expert unique pour l'électricité et la plomberie. Installations, dépannages, et conseils pour un habitat performant et sécurisé. 💡💧🛠️
+                </p>
+
+                <div class="flex flex-col items-center justify-center gap-4 pt-4">
+                    <div class="cta-shine-container">
+                        <div class="cta-shine-animated-border"></div>
+                        <a id="devis-button" href="#contact" class="cta-button-content">
+                            Demander un Devis Gratuit
+                        </a>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <p class="text-lg text-gray-300 mb-2">Pour une réponse immédiate ou une urgence :</p>
+                        <a href="tel:0758592500" 
+                           class="call-now-prompt inline-flex items-center justify-center px-8 py-4 bg-pink-600 hover:bg-pink-700 text-white text-xl font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Appelez-nous : 07 58 59 25 00
+                        </a>
+                        <p class="text-sm text-gray-400 mt-2">(Disponible 24/7 pour les urgences)</p>
+                    </div>
+                    <a href="services.html" class="mt-4 px-8 py-3.5 text-sm font-medium text-gray-300 bg-gray-800/60 border border-gray-700 rounded-full hover:bg-gray-700/80 transition-colors duration-300"> 
+                        Découvrir Nos Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-24 sm:mt-32 mx-auto w-full max-w-4xl relative z-10 px-4">
+                <img
+                    src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGVsZWN0cmljaWFuJTIwYW5kJTIwcGx1bWJlciUyMHdvcmtpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1200&q=70"
+                    class="w-full shadow-2xl rounded-lg border border-gray-700/50"
+                    alt="Électricien et Plombier professionnels - oéléctricité"
+                    onerror="this.onerror=null; this.src='https://placehold.co/1200x600/111827/374151?text=Services+Électricité+&+Plomberie'; this.alt='Image de remplacement pour services électricité et plomberie'"
+                />
+                 <p class="text-xs text-gray-500 mt-2 text-center">Intervention professionnelle en électricité et plomberie.</p>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 sm:py-24 bg-black/30 backdrop-blur-sm">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">Nos Prestations Complètes</h2>
+                <p class="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Solutions expertes pour tous vos besoins en électricité et plomberie, du neuf à la rénovation, en passant par le dépannage.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"> 
+                    <div class="service-card p-6 rounded-xl text-center">
+                        <div class="service-icon-container bg-purple-500/20 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Installations & Rénovations</h3>
+                        <p class="text-gray-400 text-sm">Câblage complet, tableaux électriques, mise aux normes (NF C 15-100) pour maisons neuves et rénovations complètes.</p>
+                    </div>
+                    <div class="service-card p-6 rounded-xl text-center">
+                        <div class="service-icon-container bg-pink-500/20 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><path d="M2 8c0-2.2.7-4.3 2-6"></path><path d="M22 8c0-2.2-.7-4.3-2-6"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Domotique & Maison Connectée</h3>
+                        <p class="text-gray-400 text-sm">Automatisation de l'éclairage, volets roulants, chauffage, sécurité. Solutions intelligentes pour un confort optimal.</p>
+                    </div>
+                    <div class="service-card p-6 rounded-xl text-center">
+                        <div class="service-icon-container bg-orange-500/20 mx-auto">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FB923C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12V7a5 5 0 0 1 10 0v5"></path><path d="M16.5 16.5A2.5 2.5 0 1 1 19 14a2.5 2.5 0 0 1-2.5 2.5zM12 12H8"></path><path d="M12 12V2"></path><path d="M5 12H3.5a2.5 2.5 0 1 1 0-5H5"></path><path d="M21 12h-1.5a2.5 2.5 0 1 0 0-5H21"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Bornes de Recharge (IRVE)</h3>
+                        <p class="text-gray-400 text-sm">Installation de bornes de recharge pour véhicules électriques et hybrides, pour particuliers et professionnels.</p>
+                    </div>
+                     <div class="service-card p-6 rounded-xl text-center">
+                        <div class="service-icon-container bg-teal-500/20 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1z"></path><path d="M19 12V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v5"></path><path d="M12 12V2.5"></path><path d="M12 21v-3"></path><path d="M8 5v1.5"></path><path d="M16 5v1.5"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Motorisation de Portails & Accès</h3>
+                        <p class="text-gray-400 text-sm">Installation et dépannage de systèmes de motorisation pour portails, portes de garage, et contrôle d'accès.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">Contactez-nous Dès Aujourd'hui</h2>
+                <p class="text-lg text-gray-300 mb-10 max-w-xl mx-auto">
+                    Un projet en tête ? Une urgence ? Remplissez le formulaire ou appelez-nous directement.
+                </p>
+                <form id="contact-form" class="max-w-lg mx-auto space-y-6">
+                    <div>
+                        <input type="text" id="contact-name" name="name" placeholder="Votre Nom" class="w-full p-3 rounded-md bg-gray-800/70 border border-gray-700 text-gray-200 focus:border-purple-500 focus:ring-purple-500 outline-none transition-colors" required>
+                    </div>
+                    <div>
+                        <input type="email" id="contact-email" name="email" placeholder="Votre Email" class="w-full p-3 rounded-md bg-gray-800/70 border border-gray-700 text-gray-200 focus:border-purple-500 focus:ring-purple-500 outline-none transition-colors" required>
+                    </div>
+                     <div>
+                        <input type="tel" id="contact-phone" name="phone" placeholder="Votre Téléphone (Optionnel)" class="w-full p-3 rounded-md bg-gray-800/70 border border-gray-700 text-gray-200 focus:border-purple-500 focus:ring-purple-500 outline-none transition-colors">
+                    </div>
+                    <div>
+                        <textarea id="contact-message" name="message" placeholder="Votre Message / Description de votre projet" rows="5" class="w-full p-3 rounded-md bg-gray-800/70 border border-gray-700 text-gray-200 focus:border-purple-500 focus:ring-purple-500 outline-none transition-colors" required></textarea>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-3 mt-6">
+                        <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold rounded-full hover:from-purple-700 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-pink-500/30 flex items-center justify-center">
+                            Envoyer par Email 🚀
+                        </button>
+                        <span class="text-gray-400 my-2 sm:my-0">ou</span>
+                        <a href="tel:0758592500" class="w-full sm:w-auto px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-green-500/30 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Appelez-nous
+                        </a>
+                    </div>
+                </form>
+                 <p id="form-submission-message" class="mt-4 text-green-400 hidden"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 bg-black/50 border-t border-gray-800/50">
+        <div class="container mx-auto px-4 md:px-8 text-center text-gray-400 text-sm">
+            <p class="font-semibold text-white">oéléctricité & Plomberie</p>
+            <div class="footer-contact-info flex flex-wrap justify-center items-center gap-x-4 gap-y-1 my-2">
+                <span>18 Les Augers, 16700 Saint-Gourson</span>
+                <span>&bull;</span>
+                <a href="mailto:o.electricite@gmail.com" class="hover:text-purple-400 transition-colors">o.electricite@gmail.com</a>
+                <span>&bull;</span>
+                <a href="tel:0758592500" class="hover:text-purple-400 transition-colors">07 58 59 25 00</a>
+            </div>
+            <p>&copy; <span id="current-year">2025</span> oéléctricité - Tous droits réservés.</p>
+            <p class="mt-1 text-xs">Toute reproduction, même partielle, du contenu de ce site (textes, images, graphismes) est interdite sans autorisation écrite préalable.</p>
+            <p class="mt-1 text-xs">Les informations et tarifs présentés sur ce site sont donnés à titre indicatif et non contractuel, et peuvent être sujets à modification sans préavis.</p>
+            <p class="mt-1">by Clfm web </p>
+        </div>
+    </footer>
+
+    <div id="cookie-consent-modal">
+        <div class="cookie-consent-content">
+            <div class="cookie-consent-text">
+                <p>Ce site utilise des cookies pour améliorer votre expérience utilisateur. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
+                <p>Pour en savoir plus sur la manière dont nous utilisons les cookies et comment vous pouvez les gérer, veuillez consulter notre <a href="/politique-de-confidentialite.html">Politique de Confidentialité</a>.</p> </div>
+            <button id="cookie-consent-accept-button" class="cookie-consent-button">Accepter</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const href = link.getAttribute('href');
+                    if (!href.endsWith('.html')) { 
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Contact Form Submission to mailto
+        const contactForm = document.getElementById('contact-form');
+        const formSubmissionMessage = document.getElementById('form-submission-message');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                const name = document.getElementById('contact-name').value;
+                const email = document.getElementById('contact-email').value;
+                const phone = document.getElementById('contact-phone').value;
+                const message = document.getElementById('contact-message').value;
+
+                const recipientEmail = "o.electricite@gmail.com"; // Remplacé o-electricite par o.electricite
+                const subject = encodeURIComponent(`Nouvelle demande de ${name} (via site web)`);
+                let body = `Bonjour oéléctricité & Plomberie,\n\nVous avez reçu une nouvelle demande de contact :\n\n`;
+                body += `Nom : ${name}\n`;
+                body += `Email : ${email}\n`;
+                if (phone) { body += `Téléphone : ${phone}\n`; }
+                body += `Message :\n${message}\n\n`;
+                body += `--------------------------------\nEnvoyé via le formulaire du site oéléctricité.com`;
+
+                const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoLink;
+
+                if (formSubmissionMessage) {
+                    formSubmissionMessage.textContent = "Votre client de messagerie devrait s'ouvrir. Si ce n'est pas le cas, merci de nous contacter directement à o.electricite@gmail.com.";
+                    formSubmissionMessage.classList.remove('hidden');
+                    formSubmissionMessage.classList.add('text-green-400');
+                }
+            });
+        }
+        
+        // Cookie Consent Logic
+        const cookieConsentModal = document.getElementById('cookie-consent-modal');
+        const cookieConsentAcceptButton = document.getElementById('cookie-consent-accept-button');
+        const cookieConsentKey = 'olectricitePlomberieCookieConsent';
+
+        function showCookieConsentModal() {
+            if (cookieConsentModal) {
+                setTimeout(() => {
+                    cookieConsentModal.classList.add('active');
+                }, 500); 
+            }
+        }
+
+        if (localStorage.getItem(cookieConsentKey) !== 'accepted') {
+            showCookieConsentModal();
+        }
+
+        if (cookieConsentAcceptButton && cookieConsentModal) {
+            cookieConsentAcceptButton.addEventListener('click', () => {
+                localStorage.setItem(cookieConsentKey, 'accepted');
+                cookieConsentModal.classList.remove('active');
+                setTimeout(() => {
+                    cookieConsentModal.style.display = 'none'; 
+                }, 500); 
+            });
+        }
+
+    </script>
+</body>
+</html>

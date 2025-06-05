@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Projets - oéléctricité & Plomberie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css" />
+    <style>
+        body {
+            font-family: 'Geist Sans', sans-serif;
+            background-color: #0A0A0A; 
+            color: #E5E7EB; 
+            overflow-x: hidden;
+        }
+
+        .retro-grid {
+            --grid-angle: 65deg;
+            --cell-size: 50px;
+            --opacity: 0.1; 
+            --line-color: #374151; 
+        }
+        .grid-container { opacity: var(--opacity); }
+        .grid-lines {
+            background-image:
+                linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+            background-size: var(--cell-size) var(--cell-size);
+            animation: animate-grid 25s linear infinite;
+            height: 300vh; width: 600vw;  
+            position: absolute; inset: -100% -100%; 
+            margin: auto; transform-origin: 50% 50%; 
+        }
+        @keyframes animate-grid {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(calc(var(--cell-size) / 4), calc(var(--cell-size) / 4)); }
+            50% { transform: translate(0, calc(var(--cell-size) / 2)); }
+            75% { transform: translate(calc(var(--cell-size) / -4), calc(var(--cell-size) / 4)); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .font-geist { font-family: 'Geist Sans', sans-serif; }
+        
+        .post-card { 
+            background-color: rgba(23, 31, 42, 0.75); 
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(55, 65, 81, 0.75); 
+            border-radius: 0.75rem;
+            overflow: hidden; 
+        }
+        
+        .post-media { 
+            width: 100%;
+            height: auto; 
+            min-height: 200px; 
+            max-height: 550px; 
+            object-fit: cover;
+            background-color: #111827; 
+        }
+        
+        .media-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: #111827;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #111827;
+        }
+        
+        .plyr {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .project-tag { 
+            display: inline-block;
+            background-color: rgba(139, 92, 246, 0.2); 
+            color: #c084fc; 
+            padding: 0.25rem 0.75rem; 
+            border-radius: 9999px; 
+            font-size: 0.75rem; 
+            font-weight: 500; 
+            margin-right: 0.5rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .project-tag-video { 
+            background-color: rgba(236, 72, 153, 0.2); 
+            color: #f9a8d4; 
+        }
+        
+        .media-type-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .nav-active {
+            color: #FBBF24 !important; 
+            font-weight: 600;
+        }
+
+        .input-like { 
+            background-color: #1F2937; 
+            color: #E5E7EB; 
+        }
+        .input-like:focus { 
+            background-color: #374151; 
+            outline: none;
+            box-shadow: 0 0 0 2px #8B5CF6; 
+        }
+        .comment-input {
+             background-color: #374151; 
+             border: 1px solid #4B5563;
+        }
+        .comment-input:focus {
+            border-color: #8B5CF6;
+        }
+        .like-button.liked .fa-thumbs-up {
+            color: #8B5CF6; 
+        }
+        .like-button.liked .like-text {
+            color: #8B5CF6;
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .page-title { font-size: 2.25rem; } 
+            .page-subtitle { font-size: 1.15rem; } 
+            .footer-contact-info { flex-direction: column; align-items: center; }
+            .footer-contact-info > span { margin-bottom: 0.25rem; }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden">
+        <div class="absolute top-0 h-screen w-screen bg-purple-950/5 dark:bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+        <div class="retro-grid pointer-events-none absolute size-full overflow-hidden [perspective:200px]">
+            <div class="grid-container absolute inset-0 [transform:rotateX(var(--grid-angle))]">
+                <div class="grid-lines"></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent to-80%"></div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 left-0 right-0 z-40 p-4 sm:p-6 bg-black/70 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="main.html" class="flex items-center space-x-2 text-2xl font-bold text-white"> 
+                <img src="assets/images/logo.jpg?v=1" alt="Logo oéléctricité & Plomberie" class="w-8 h-8 rounded-full">
+                <span>oéléctricité <span class="text-xl text-blue-400">& Plomberie</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="equipe.html" class="text-gray-300 hover:text-white transition-colors">Notre equipe</a>
+                <a href="services.html" class="text-gray-300 hover:text-white transition-colors">Nos Services</a> 
+                <a href="projets.html" class="text-gray-300 hover:text-white transition-colors nav-active">Nos projets</a> 
+                <a href="fournisseur.html" class="text-gray-300 hover:text-white transition-colors">Nos fournisseurs</a>
+                <a href="main.html#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md shadow-lg rounded-b-lg">
+            <a href="equipe.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Notre equipe</a>
+            <a href="services.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Nos Services</a>
+            <a href="projets.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors nav-active">Nos projets</a>
+            <a href="fournisseur.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Nos fournisseurs</a>
+            <a href="main.html#contact" class="block px-4 py-3 text-gray-300 hover:bg-gray-800 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-12 pb-16 sm:pt-20 sm:pb-24">
+        <section class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-geist mb-4">
+                    Découvrez Nos <span class="text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400">Réalisations</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Chaque projet est une nouvelle opportunité de démontrer notre savoir-faire et notre engagement envers la qualité. Voici un aperçu de nos interventions en électricité et plomberie, présentées comme un fil d'actualités de nos chantiers.
+                </p>
+            </div>
+
+            <section id="feed-section" class="w-full max-w-xl md:max-w-2xl lg:max-w-[700px] mx-auto space-y-6">
+                
+                <!-- Exemple de projet avec vidéo - Portail -->
+                <article id="project-post-video-portail" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Vidéo <i class="fas fa-video ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation Portail Automatique</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span><span class="project-tag project-tag-video">Vidéo</span></div>
+                        <p class="text-sm text-gray-300">Démonstration de l'installation et du fonctionnement d'un portail automatique.</p>
+                    </div>
+                    <div class="video-container">
+                        <span class="media-type-indicator"><i class="fas fa-video mr-1"></i> Vidéo</span>
+                        <video class="project-video" playsinline controls>
+                            <!-- Utilisation du fichier vidéo portail.mp4 -->
+                            <source src="assets/video/portail.mp4" type="video/mp4">
+                            <!-- Fallback pour les navigateurs qui ne supportent pas HTML5 video -->
+                            <p class="text-center p-4 text-gray-300">Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.</p>
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="32">32</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="5">5</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button onclick="toggleLike('project-post-video-portail')" class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-video-portail"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button onclick="toggleComment('project-post-video-portail')" class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-video-portail"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2">
+                            <!-- Commentaires d'exemple -->
+                            <div class="flex items-start space-x-2 text-xs">
+                                <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=LD" alt="Avatar utilisateur" class="w-6 h-6 rounded-full mt-0.5">
+                                <div class="bg-gray-700/50 p-2 rounded-lg">
+                                    <span class="font-semibold text-purple-300">Laurent Dupuis</span>
+                                    <p class="text-gray-300">Très beau travail, le portail fonctionne parfaitement !</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2 text-xs">
+                                <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=CM" alt="Avatar utilisateur" class="w-6 h-6 rounded-full mt-0.5">
+                                <div class="bg-gray-700/50 p-2 rounded-lg">
+                                    <span class="font-semibold text-purple-300">Catherine Martin</span>
+                                    <p class="text-gray-300">Combien coûte ce type d'installation ?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button onclick="publishComment('project-post-video-portail')" class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Exemple de projet avec vidéo 1 -->                
+                <article id="project-post-video-1" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Vidéo <i class="fas fa-video ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation Électrique - Vidéo Explicative</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span><span class="project-tag project-tag-video">Vidéo</span></div>
+                        <p class="text-sm text-gray-300">Démonstration vidéo d'une installation électrique complète.</p>
+                    </div>
+                    <div class="video-container">
+                        <span class="media-type-indicator"><i class="fas fa-video mr-1"></i> Vidéo</span>
+                        <video class="project-video" playsinline controls>
+                            <!-- Utilisation des fichiers vidéo MP4 -->
+                            <source src="assets/video/VIDEO-2025-05-22-20-56-53.mp4" type="video/mp4">
+                            <!-- Fallback pour les navigateurs qui ne supportent pas HTML5 video -->
+                            <p class="text-center p-4 text-gray-300">Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.</p>
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="45">45</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="12">12</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button onclick="toggleLike('project-post-video-1')" class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center liked" data-post-id="project-post-video-1"><i class="fas fa-thumbs-up text-lg text-purple-400"></i> <span class="like-text text-purple-400">J'aime</span></button>
+                            <button onclick="toggleComment('project-post-video-1')" class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-video-1"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <p class="text-sm text-gray-300">Super projet !</p>
+                                    <p class="text-xs text-gray-400">Il y a 2 heures</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Vous" alt="Votre avatar" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <p class="text-sm text-gray-300">Merci ! Nous sommes ravis de votre commentaire.</p>
+                                    <p class="text-xs text-gray-400">Il y a 1 heure</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Exemple de projet avec vidéo 2 -->
+                <article id="project-post-video-2" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Vidéo <i class="fas fa-video ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Démonstration Technique</h3>
+                        <div class="mb-2"><span class="project-tag">Plomberie</span><span class="project-tag project-tag-video">Vidéo</span></div>
+                        <p class="text-sm text-gray-300">Présentation technique de notre équipe .</p>
+                    </div>
+                    <div class="video-container">
+                        <span class="media-type-indicator"><i class="fas fa-video mr-1"></i> Vidéo</span>
+                        <video class="project-video" playsinline controls>
+                            <!-- Utilisation des fichiers vidéo MP4 -->
+                            <source src="assets/video/VIDEO-2025-05-22-20-56-54.mp4" type="video/mp4">
+                            <!-- Fallback pour les navigateurs qui ne supportent pas HTML5 video -->
+                            <p class="text-center p-4 text-gray-300">Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.</p>
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="38">38</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="9">9</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-video-2"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-video-2"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Projet avec image -->                
+                <article id="project-post-3" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation Électrique o8</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span><span class="project-tag">Neuf</span></div>
+                        <p class="text-sm text-gray-300">Détails sur cette installation électrique (o8).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o8.webp" alt="Image Projet o8" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/E91E63/FFFFFF?text=Image+o8';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="33">33</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="7">7</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-3"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-3"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+                
+
+                
+                
+                <article id="project-post-4" class="post-card shadow-lg">
+                    <div class="p-4">
+                         <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation electrique o7</h3>
+                        <div class="mb-2"><span class="project-tag">Plomberie</span></div>
+                        <p class="text-sm text-gray-300">Détail de cette installation  (o7).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o7.webp" alt="Image Projet o7" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x390/FF9800/FFFFFF?text=Image+o7';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="81">81</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="15">15</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-4"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-4"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+              
+                <article id="project-post-5" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Rénovation o6</h3>
+                        <div class="mb-2"><span class="project-tag">Rénovation</span></div>
+                        <p class="text-sm text-gray-300">Exemple de rénovation (o6).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o6.webp" alt="Image Projet o6" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x410/795548/FFFFFF?text=Image+o6';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="45">45</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="6">6</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-5"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-5"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="project-post-6" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation o5</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span></div>
+                        <p class="text-sm text-gray-300">Détail de l'installation (o5).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o5.webp" alt="Image Projet o5" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/4CAF50/FFFFFF?text=Image+o5';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="19">19</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="2">2</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-6"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-6"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+          
+                <article id="project-post-7" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Projet o4</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span></div>
+                        <p class="text-sm text-gray-300">Installation électrique  o4.</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o4.webp" alt="Image Projet o4" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/03A9F4/FFFFFF?text=Image+o4';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="66">66</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="12">12</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-7"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-7"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="project-post-8" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Éclairage Extérieur o3</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span><span class="project-tag">Extérieur</span></div>
+                        <p class="text-sm text-gray-300">Mise en lumière d'un espace extérieur (o3).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o3.webp" alt="Image Projet o3" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/CDDC39/000000?text=Image+o3';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="30">30</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="4">4</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-8"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-8"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+              
+                <article id="project-post-9" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Installation  o1</h3>
+                        <div class="mb-2"><span class="project-tag">éléctricité</span><span class="project-tag">Sanitaire</span></div>
+                        <p class="text-sm text-gray-300">Pose d'équipements sanitaires (o1).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o1.webp" alt="Image Projet o1" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/FFEB3B/000000?text=Image+o1';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="41">41</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="8">8</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-9"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-9"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+                
+                <article id="project-post-10" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Détail Chantier o10</h3>
+                        <div class="mb-2"><span class="project-tag">Électricité</span></div>
+                        <p class="text-sm text-gray-300">Autre vue de nos travaux pose de panneaux solaires (o10).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o10.webp" alt="Image Projet o10" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='https://placehold.co/600x400/FFC107/000000?text=Image+o10';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="29">29</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="3">3</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-10"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-10"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+
+                
+                
+                
+                <article id="project-post-11" class="post-card shadow-lg">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://placehold.co/40x40/1F2937/E5E7EB?text=OE" alt="[Logo o-électricité]" class="w-10 h-10 rounded-full">
+                            <div><p class="font-semibold text-sm text-yellow-400">o-électricité & Plomberie</p><p class="text-xs text-gray-400">Projet Image <i class="fas fa-image ml-1"></i></p></div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-1 text-white">Panneau solaire o9</h3>
+                        <div class="mb-2"><span class="project-tag">éléctricité</span></div>
+                        <p class="text-sm text-gray-300">Travaux sur les panneaux solaires (o9).</p>
+                    </div>
+                    <div class="media-container">
+                        <span class="media-type-indicator"><i class="fas fa-image mr-1"></i> Photo</span>
+                        <img src="assets/images/o11.webp" alt="Image Projet o11" class="w-full object-cover post-media" onerror="this.onerror=null; this.src='assets/images/o11.webp';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-gray-400 text-xs mb-2">
+                            <span class="like-count-display"><i class="fas fa-thumbs-up text-purple-400"></i> <span data-count="52">52</span> J'aime</span>
+                            <span class="comment-count-display"><span data-count="9">9</span> commentaires</span>
+                        </div>
+                        <hr class="border-gray-700/50">
+                        <div class="flex justify-around pt-2">
+                            <button class="like-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-11"><i class="far fa-thumbs-up text-lg"></i> <span class="like-text">J'aime</span></button>
+                            <button class="comment-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center" data-post-id="project-post-11"><i class="far fa-comment-alt text-lg"></i> <span>Commenter</span></button>
+                            <button class="share-button flex items-center space-x-1 p-2 hover:bg-gray-700/50 rounded-lg text-sm text-gray-300 w-1/3 justify-center"><i class="fas fa-share text-lg"></i> <span>Partager</span></button>
+                        </div>
+                        <div class="comments-list mt-3 space-y-2"></div>
+                        <div class="add-comment-section mt-2 hidden">
+                            <div class="flex items-center space-x-2"><img src="https://placehold.co/32x32/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-8 h-8 rounded-full"><input type="text" class="comment-input input-like rounded-full px-3 py-2 w-full text-sm" placeholder="Écrivez un commentaire..."></div>
+                            <button class="publish-comment-button mt-2 ml-10 px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full">Publier</button>
+                        </div>
+                    </div>
+                </article>
+                
+             
+
+
+                
+
+
+            </section>
+
+           
+
+        </section>
+    </main>
+
+    <footer class="py-8 bg-black/50 border-t border-gray-800/50">
+        <div class="container mx-auto px-4 md:px-8 text-center text-gray-400 text-sm">
+            <p class="font-semibold text-white">oéléctricité & Plomberie</p>
+            <div class="footer-contact-info flex flex-wrap justify-center items-center gap-x-4 gap-y-1 my-2">
+                <span>18 Les Augers, 16700 Saint-Gourson</span>
+                <span>&bull;</span>
+                <a href="mailto:o.electricite@gmail.com" class="hover:text-purple-400 transition-colors">o.electricite@gmail.com</a>
+                <span>&bull;</span>
+                <a href="tel:0758592500" class="hover:text-purple-400 transition-colors">07 58 59 25 00</a>
+            </div>
+            <p>&copy; <span id="current-year">2025</span> oéléctricité - Tous droits réservés.</p>
+            <p class="mt-1">by Clfm web</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.includes('.html') && !href.startsWith('#')) {
+                        return;
+                    }
+                    mobileMenu.classList.add('hidden');
+                    if (href && href.startsWith('#') && href.length > 1) {
+                        const currentPath = window.location.pathname.split('/').pop();
+                        const linkPath = (link.hostname === window.location.hostname && link.pathname === window.location.pathname) ? currentPath : href.split('#')[0];
+                        if (linkPath === currentPath || (linkPath === 'main.html' && currentPath.includes('nos_projets.html'))) {
+                            const targetElement = document.querySelector(href.substring(href.indexOf('#')));
+                            if (targetElement) {
+                                e.preventDefault();
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Script d'interaction simple et direct pour les likes et commentaires
+        window.onload = function() {
+            console.log('Page chargée - Configuration des interactions...');
+            
+            // Gestion des likes avec onclick direct
+            const likeButtons = document.querySelectorAll('.like-button');
+            likeButtons.forEach(button => {
+                button.onclick = function() {
+                    console.log('Like button clicked');
+                    const icon = this.querySelector('i');
+                    const likeText = this.querySelector('.like-text');
+                    const postId = this.getAttribute('data-post-id');
+                    const postElement = document.getElementById(postId);
+                    const likeCountSpan = postElement.querySelector('.like-count-display span[data-count]');
+                    let currentLikes = parseInt(likeCountSpan.dataset.count, 10);
+
+                    if (this.classList.contains('liked')) {
+                        this.classList.remove('liked');
+                        icon.className = 'far fa-thumbs-up text-lg';
+                        likeText.className = 'like-text';
+                        currentLikes--;
+                    } else {
+                        this.classList.add('liked');
+                        icon.className = 'fas fa-thumbs-up text-lg text-purple-400';
+                        likeText.className = 'like-text text-purple-400';
+                        currentLikes++;
+                    }
+                    likeCountSpan.dataset.count = currentLikes;
+                    likeCountSpan.textContent = currentLikes;
+                    return false;
+                };
+            });
+
+            // Gestion des commentaires avec onclick direct
+            const commentButtons = document.querySelectorAll('.comment-button');
+            commentButtons.forEach(button => {
+                button.onclick = function() {
+                    console.log('Comment button clicked');
+                    const postId = this.getAttribute('data-post-id');
+                    const postElement = document.getElementById(postId);
+                    const addCommentSection = postElement.querySelector('.add-comment-section');
+                    if (addCommentSection.classList.contains('hidden')) {
+                        addCommentSection.classList.remove('hidden');
+                        addCommentSection.querySelector('.comment-input').focus();
+                    } else {
+                        addCommentSection.classList.add('hidden');
+                    }
+                    return false;
+                };
+            });
+            
+            // Gestion de la publication des commentaires avec onclick direct
+            const publishButtons = document.querySelectorAll('.publish-comment-button');
+            publishButtons.forEach(button => {
+                button.onclick = function() {
+                    console.log('Publish button clicked');
+                    const addCommentSection = this.closest('.add-comment-section');
+                    const postElement = addCommentSection.closest('article');
+                    const commentInput = addCommentSection.querySelector('.comment-input');
+                    const commentsList = postElement.querySelector('.comments-list');
+                    const commentCountSpan = postElement.querySelector('.comment-count-display span[data-count]');
+                    
+                    if (commentInput.value.trim() !== '') {
+                        const newCommentDiv = document.createElement('div');
+                        newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                        newCommentDiv.innerHTML = `
+                            <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-6 h-6 rounded-full mt-0.5">
+                            <div class="bg-gray-700/50 p-2 rounded-lg">
+                                <span class="font-semibold text-purple-300">Moi</span>
+                                <p class="text-gray-300">${commentInput.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                            </div>
+                        `;
+                        commentsList.appendChild(newCommentDiv);
+                        commentInput.value = '';
+                        addCommentSection.classList.add('hidden');
+
+                        let currentComments = parseInt(commentCountSpan.dataset.count, 10);
+                        currentComments++;
+                        commentCountSpan.dataset.count = currentComments;
+                        commentCountSpan.textContent = currentComments;
+                    }
+                    return false;
+                };
+            });
+        };
+
+        const feed = document.getElementById('feed-section');
+        if (feed) {
+            feed.addEventListener('click', function(event) {
+                const target = event.target;
+                
+                const likeButton = target.closest('.like-button');
+                if (likeButton) {
+                    const icon = likeButton.querySelector('i');
+                    const likeText = likeButton.querySelector('.like-text');
+                    const postId = likeButton.dataset.postId;
+                    const postElement = document.getElementById(postId);
+                    if (!postElement) return; 
+                    const likeCountSpan = postElement.querySelector('.like-count-display span[data-count]');
+                    if (!likeCountSpan) return; 
+
+                    let currentLikes = parseInt(likeCountSpan.dataset.count, 10);
+
+                    if (likeButton.classList.contains('liked')) {
+                        likeButton.classList.remove('liked');
+                        icon.classList.remove('fas'); 
+                        icon.classList.add('far');   
+                        likeText.textContent = "J'aime";
+                        currentLikes--;
+                    } else {
+                        likeButton.classList.add('liked');
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        likeText.textContent = "J'aime"; 
+                        currentLikes++;
+                    }
+                    likeCountSpan.dataset.count = currentLikes;
+                    likeCountSpan.textContent = currentLikes;
+                }
+
+                const commentButton = target.closest('.comment-button');
+                if (commentButton) {
+                    const postId = commentButton.dataset.postId;
+                    const postElement = document.getElementById(postId);
+                    if (!postElement) return;
+                    const addCommentSection = postElement.querySelector('.add-comment-section');
+                    if (addCommentSection) {
+                        addCommentSection.classList.toggle('hidden');
+                        if (!addCommentSection.classList.contains('hidden')) {
+                            addCommentSection.querySelector('.comment-input').focus();
+                        }
+                    }
+                }
+                
+                const publishButton = target.closest('.publish-comment-button');
+                if (publishButton) {
+                    const addCommentSection = publishButton.closest('.add-comment-section');
+                    if (!addCommentSection) return;
+                    const postElement = addCommentSection.closest('article');
+                    if (!postElement) return;
+                    const commentInput = addCommentSection.querySelector('.comment-input');
+                    const commentsList = postElement.querySelector('.comments-list');
+                    const commentCountSpan = postElement.querySelector('.comment-count-display span[data-count]');
+                    
+                    if (commentInput && commentsList && commentCountSpan && commentInput.value.trim() !== '') {
+                        const newCommentDiv = document.createElement('div');
+                        newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                        newCommentDiv.innerHTML = `
+                            <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-6 h-6 rounded-full mt-0.5">
+                            <div class="bg-gray-700/50 p-2 rounded-lg">
+                                <span class="font-semibold text-purple-300">Moi</span>
+                                <p class="text-gray-300">${commentInput.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                            </div>
+                        `;
+                        commentsList.appendChild(newCommentDiv);
+                        commentInput.value = '';
+                        addCommentSection.classList.add('hidden');
+
+                        let currentComments = parseInt(commentCountSpan.dataset.count, 10);
+                        currentComments++;
+                        commentCountSpan.dataset.count = currentComments;
+                        commentCountSpan.textContent = currentComments;
+                    }
+                }
+            });
+        }
+    </script>
+    <!-- Script Plyr pour les vidéos -->    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser tous les lecteurs vidéo Plyr
+            const players = Plyr.setup('.project-video', {
+                controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+                hideControls: true,
+                autoplay: false,
+                muted: true
+            });
+            
+            // Ajouter des événements pour les vidéos
+            players.forEach(player => {
+                // Ajouter un événement pour activer le son au clic
+                player.on('play', function() {
+                    player.muted = false;
+                });
+            });
+            
+            // Simuler des commentaires et likes préexistants
+            function simulateComments() {
+                // Exemples de commentaires
+                const commentExamples = [
+                    { name: 'Thomas Petit', text: 'Très bonne démonstration technique. Cela m\'a beaucoup aidé pour comprendre le processus.' },
+                    { name: 'Sophie Girard', text: 'Excellent travail ! Je recommande vivement vos services.' },
+                    { name: 'Jean Dupont', text: 'Excellent travail ! Très professionnel et bien expliqué.' },
+                    { name: 'Marie Leroy', text: 'Je vais vous contacter pour un projet similaire chez moi.' },
+                    { name: 'Pierre Martin', text: 'Quelle qualité de travail ! Bravo à toute l\'équipe.' },
+                    { name: 'Céline Dubois', text: 'Travail soigné et professionnel comme d\'habitude.' }
+                ];
+                
+                // Ajouter des commentaires à tous les projets
+                document.querySelectorAll('.post-card').forEach(post => {
+                    const commentsList = post.querySelector('.comments-list');
+                    if (commentsList && commentsList.children.length === 0) {
+                        // Choisir 2 commentaires aléatoires
+                        const shuffled = [...commentExamples].sort(() => 0.5 - Math.random());
+                        const selected = shuffled.slice(0, 2);
+                        
+                        selected.forEach(comment => {
+                            const initials = comment.name.split(' ').map(n => n[0]).join('');
+                            const newCommentDiv = document.createElement('div');
+                            newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                            newCommentDiv.innerHTML = `
+                                <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=${initials}" alt="Avatar utilisateur" class="w-6 h-6 rounded-full mt-0.5">
+                                <div class="bg-gray-700/50 p-2 rounded-lg">
+                                    <span class="font-semibold text-purple-300">${comment.name}</span>
+                                    <p class="text-gray-300">${comment.text}</p>
+                                </div>
+                            `;
+                            commentsList.appendChild(newCommentDiv);
+                        });
+                        
+                        // Mettre à jour le compteur de commentaires
+                        const commentCountSpan = post.querySelector('.comment-count-display span[data-count]');
+                        if (commentCountSpan) {
+                            commentCountSpan.textContent = selected.length;
+                            commentCountSpan.dataset.count = selected.length;
+                        }
+                    }
+                });
+                
+                // Simuler des likes aléatoires
+                document.querySelectorAll('.post-card').forEach((post, index) => {
+                    // Simuler un like sur le premier projet vidéo
+                    if (index === 0) {
+                        const likeButton = post.querySelector('.like-button');
+                        if (likeButton && !likeButton.classList.contains('liked')) {
+                            likeButton.classList.add('liked');
+                            const icon = likeButton.querySelector('i');
+                            if (icon) {
+                                icon.classList.remove('far');
+                                icon.classList.add('fas');
+                                icon.classList.add('text-purple-400');
+                            }
+                            const likeText = likeButton.querySelector('.like-text');
+                            if (likeText) {
+                                likeText.classList.add('text-purple-400');
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Exécuter la simulation après un court délai
+            setTimeout(simulateComments, 500);
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        if (href && href.includes('.html') && !href.startsWith('#')) {
+                            // Allow default navigation for external pages
+                            return;
+                        }
+                        // For internal anchors or non-page links, close menu
+                        mobileMenu.classList.add('hidden');
+
+                        // Handle smooth scroll for internal anchors on the current page
+                        if (href && href.startsWith('#') && href.length > 1) {
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                e.preventDefault();
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Interaction avec les posts - Version améliorée
+            function setupInteractions() {
+                console.log('Configuration des interactions...');
+                
+                // Gestion des likes
+                document.querySelectorAll('.like-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        console.log('Like button clicked');
+                        const icon = this.querySelector('i');
+                        const likeText = this.querySelector('.like-text');
+                        if (!icon || !likeText) return;
+                        
+                        const postId = this.dataset.postId;
+                        const postElement = document.getElementById(postId);
+                        if (!postElement) return; 
+                        const likeCountSpan = postElement.querySelector('.like-count-display span[data-count]');
+                        if (!likeCountSpan) return; 
+
+                        let currentLikes = parseInt(likeCountSpan.dataset.count, 10);
+
+                        if (this.classList.contains('liked')) {
+                            this.classList.remove('liked');
+                            icon.classList.remove('fas', 'text-purple-400'); 
+                            icon.classList.add('far');   
+                            likeText.classList.remove('text-purple-400');
+                            currentLikes--;
+                        } else {
+                            this.classList.add('liked');
+                            icon.classList.remove('far');
+                            icon.classList.add('fas', 'text-purple-400');
+                            likeText.classList.add('text-purple-400');
+                            currentLikes++;
+                        }
+                        likeCountSpan.dataset.count = currentLikes;
+                        likeCountSpan.textContent = currentLikes;
+                    });
+                });
+
+                // Gestion des commentaires
+                document.querySelectorAll('.comment-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        console.log('Comment button clicked');
+                        const postId = this.dataset.postId;
+                        const postElement = document.getElementById(postId);
+                        if (!postElement) return;
+                        const addCommentSection = postElement.querySelector('.add-comment-section');
+                        if (addCommentSection) {
+                            addCommentSection.classList.toggle('hidden');
+                            if (!addCommentSection.classList.contains('hidden')) {
+                                addCommentSection.querySelector('.comment-input').focus();
+                            }
+                        }
+                    });
+                });
+                
+                // Gestion de la publication des commentaires
+                document.querySelectorAll('.publish-comment-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        console.log('Publish button clicked');
+                        const addCommentSection = this.closest('.add-comment-section');
+                        if (!addCommentSection) return;
+                        const postElement = addCommentSection.closest('article');
+                        if (!postElement) return;
+                        const commentInput = addCommentSection.querySelector('.comment-input');
+                        const commentsList = postElement.querySelector('.comments-list');
+                        const commentCountSpan = postElement.querySelector('.comment-count-display span[data-count]');
+                        
+                        if (commentInput && commentsList && commentCountSpan && commentInput.value.trim() !== '') {
+                            const newCommentDiv = document.createElement('div');
+                            newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                            newCommentDiv.innerHTML = `
+                                <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-6 h-6 rounded-full mt-0.5">
+                                <div class="bg-gray-700/50 p-2 rounded-lg">
+                                    <span class="font-semibold text-purple-300">Moi</span>
+                                    <p class="text-gray-300">${commentInput.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                                </div>
+                            `;
+                            commentsList.appendChild(newCommentDiv);
+                            commentInput.value = '';
+                            addCommentSection.classList.add('hidden');
+
+                            let currentComments = parseInt(commentCountSpan.dataset.count, 10);
+                            currentComments++;
+                            commentCountSpan.dataset.count = currentComments;
+                            commentCountSpan.textContent = currentComments;
+                        }
+                    });
+                });
+            }
+            
+            // Appeler la fonction de configuration des interactions
+            setupInteractions();
+        });
+    </script>
+    <!-- Script d'interaction indépendant pour les likes et commentaires -->
+    <script>
+        // Attendre que la page soit complètement chargée
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM chargé - Configuration des interactions...');
+            
+            // Fonction pour gérer les clics sur les boutons J'aime
+            function handleLikeClick(event) {
+                console.log('Like button clicked');
+                const button = event.currentTarget;
+                const icon = button.querySelector('i');
+                const likeText = button.querySelector('.like-text');
+                const postId = button.getAttribute('data-post-id');
+                const postElement = document.getElementById(postId);
+                const likeCountSpan = postElement.querySelector('.like-count-display span[data-count]');
+                let currentLikes = parseInt(likeCountSpan.dataset.count, 10);
+
+                if (button.classList.contains('liked')) {
+                    button.classList.remove('liked');
+                    icon.className = 'far fa-thumbs-up text-lg';
+                    likeText.className = 'like-text';
+                    currentLikes--;
+                } else {
+                    button.classList.add('liked');
+                    icon.className = 'fas fa-thumbs-up text-lg text-purple-400';
+                    likeText.className = 'like-text text-purple-400';
+                    currentLikes++;
+                }
+                likeCountSpan.dataset.count = currentLikes;
+                likeCountSpan.textContent = currentLikes;
+                event.preventDefault();
+            }
+
+            // Fonction pour gérer les clics sur les boutons Commenter
+            function handleCommentClick(event) {
+                console.log('Comment button clicked');
+                const button = event.currentTarget;
+                const postId = button.getAttribute('data-post-id');
+                const postElement = document.getElementById(postId);
+                const addCommentSection = postElement.querySelector('.add-comment-section');
+                if (addCommentSection.classList.contains('hidden')) {
+                    addCommentSection.classList.remove('hidden');
+                    addCommentSection.querySelector('.comment-input').focus();
+                } else {
+                    addCommentSection.classList.add('hidden');
+                }
+                event.preventDefault();
+            }
+
+            // Fonction pour gérer les clics sur les boutons Publier
+            function handlePublishClick(event) {
+                console.log('Publish button clicked');
+                const button = event.currentTarget;
+                const addCommentSection = button.closest('.add-comment-section');
+                const postElement = addCommentSection.closest('article');
+                const commentInput = addCommentSection.querySelector('.comment-input');
+                const commentsList = postElement.querySelector('.comments-list');
+                const commentCountSpan = postElement.querySelector('.comment-count-display span[data-count]');
+                
+                if (commentInput.value.trim() !== '') {
+                    const newCommentDiv = document.createElement('div');
+                    newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                    newCommentDiv.innerHTML = `
+                        <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-6 h-6 rounded-full mt-0.5">
+                        <div class="bg-gray-700/50 p-2 rounded-lg">
+                            <span class="font-semibold text-purple-300">Moi</span>
+                            <p class="text-gray-300">${commentInput.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                        </div>
+                    `;
+                    commentsList.appendChild(newCommentDiv);
+                    commentInput.value = '';
+                    addCommentSection.classList.add('hidden');
+
+                    let currentComments = parseInt(commentCountSpan.dataset.count, 10);
+                    currentComments++;
+                    commentCountSpan.dataset.count = currentComments;
+                    commentCountSpan.textContent = currentComments;
+                }
+                event.preventDefault();
+            }
+
+            // Attacher les gestionnaires d'événements aux boutons
+            const likeButtons = document.querySelectorAll('.like-button');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', handleLikeClick);
+            });
+
+            const commentButtons = document.querySelectorAll('.comment-button');
+            commentButtons.forEach(button => {
+                button.addEventListener('click', handleCommentClick);
+            });
+
+            const publishButtons = document.querySelectorAll('.publish-comment-button');
+            publishButtons.forEach(button => {
+                button.addEventListener('click', handlePublishClick);
+            });
+
+            console.log('Nombre de boutons J\'aime configurés:', likeButtons.length);
+            console.log('Nombre de boutons Commenter configurés:', commentButtons.length);
+            console.log('Nombre de boutons Publier configurés:', publishButtons.length);
+        });
+    </script>
+    <!-- Script simple pour les likes et commentaires -->
+    <script>
+        // Fonction pour basculer l'état d'un like
+        function toggleLike(postId) {
+            const postElement = document.getElementById(postId);
+            const likeButton = postElement.querySelector('.like-button');
+            const icon = likeButton.querySelector('i');
+            const likeText = likeButton.querySelector('.like-text');
+            const likeCountSpan = postElement.querySelector('.like-count-display span[data-count]');
+            let currentLikes = parseInt(likeCountSpan.dataset.count, 10);
+
+            if (likeButton.classList.contains('liked')) {
+                likeButton.classList.remove('liked');
+                icon.className = 'far fa-thumbs-up text-lg';
+                likeText.className = 'like-text';
+                currentLikes--;
+            } else {
+                likeButton.classList.add('liked');
+                icon.className = 'fas fa-thumbs-up text-lg text-purple-400';
+                likeText.className = 'like-text text-purple-400';
+                currentLikes++;
+            }
+            likeCountSpan.dataset.count = currentLikes;
+            likeCountSpan.textContent = currentLikes;
+        }
+
+        // Fonction pour afficher/masquer la section de commentaire
+        function toggleComment(postId) {
+            const postElement = document.getElementById(postId);
+            const addCommentSection = postElement.querySelector('.add-comment-section');
+            if (addCommentSection.classList.contains('hidden')) {
+                addCommentSection.classList.remove('hidden');
+                addCommentSection.querySelector('.comment-input').focus();
+            } else {
+                addCommentSection.classList.add('hidden');
+            }
+        }
+
+        // Fonction pour publier un commentaire
+        function publishComment(postId) {
+            const postElement = document.getElementById(postId);
+            const addCommentSection = postElement.querySelector('.add-comment-section');
+            const commentInput = addCommentSection.querySelector('.comment-input');
+            const commentsList = postElement.querySelector('.comments-list');
+            const commentCountSpan = postElement.querySelector('.comment-count-display span[data-count]');
+            
+            if (commentInput.value.trim() !== '') {
+                const newCommentDiv = document.createElement('div');
+                newCommentDiv.className = 'flex items-start space-x-2 text-xs';
+                newCommentDiv.innerHTML = `
+                    <img src="https://placehold.co/24x24/1F2937/E5E7EB?text=Moi" alt="Mon avatar" class="w-6 h-6 rounded-full mt-0.5">
+                    <div class="bg-gray-700/50 p-2 rounded-lg">
+                        <span class="font-semibold text-purple-300">Moi</span>
+                        <p class="text-gray-300">${commentInput.value.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                    </div>
+                `;
+                commentsList.appendChild(newCommentDiv);
+                commentInput.value = '';
+                addCommentSection.classList.add('hidden');
+
+                let currentComments = parseInt(commentCountSpan.dataset.count, 10);
+                currentComments++;
+                commentCountSpan.dataset.count = currentComments;
+                commentCountSpan.textContent = currentComments;
+            }
+        }
+
+        // Ajouter onclick aux boutons de publication
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.publish-comment-button').forEach(button => {
+                const postId = button.closest('article').id;
+                button.setAttribute('onclick', `publishComment('${postId}')`);
+            });
+
+            // Ajouter onclick aux autres boutons like et comment
+            document.querySelectorAll('.like-button').forEach(button => {
+                if (!button.hasAttribute('onclick')) {
+                    const postId = button.getAttribute('data-post-id');
+                    button.setAttribute('onclick', `toggleLike('${postId}')`);
+                }
+            });
+
+            document.querySelectorAll('.comment-button').forEach(button => {
+                if (!button.hasAttribute('onclick')) {
+                    const postId = button.getAttribute('data-post-id');
+                    button.setAttribute('onclick', `toggleComment('${postId}')`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
